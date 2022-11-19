@@ -1,0 +1,104 @@
+{#<head>
+<style>
+    .menu-container{
+        position: absolute;
+        top: 11rem;
+        right: 20rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-wrapper{
+        background-color: rgba(255,255,255, .5);
+        backdrop-filter: blur(5px);
+        box-shadow: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 1.5rem;
+        x&padding: 4rem 2rem;
+
+    }
+    .menu-wrapper>*{
+        margin: 1rem;
+        width: 10rem;
+        padding: .5rem;
+        border:none;
+        color: #1e2125;
+        background-color: white;
+        border-radius: 0.6rem;
+        box-shadow: gray;
+        font-weight: bold;
+        font-size: .85rem;
+    }
+</style>
+</head>#}
+
+<style>
+    .row.margin{
+        margin-left: 150px;
+        width:500px;
+    }
+    .graph-display{
+        background-color: white;
+        height: 25rem;
+    }
+    .menu-container{
+        background-color: rgba(255,255,255, 0.6);
+
+    }
+    .menu-container button{
+        margin: auto;
+    }
+    .list-routers{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height: 25rem;
+    }
+    .parent-menu{
+        z-index: 15;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .bot{
+        width: 300px;
+    }
+</style>
+
+<div class="container mt-5 parent-menu">
+
+<div class="menu-container  row p-3 rounded">
+    <div class="menu-distance col d-flex flex-column justify-content-between">
+        <div class="list-routers row m-3">
+            <ul class="list-group ">
+                {% for r in routers %}
+             <li class="btn btn-dark list-group-item m-1 list-routers-item" id="{{ r }} " onclick="show_dist(this.id)">  {{r}}
+                  </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row margin">
+            <div class="bot">
+            <button id="btn-dist" class="col btn btn-info">
+            Calculated Distance :<span id="calculated-distance"> 0 Metre</span>
+            </button>
+                </div>
+            <p class="col m-auto fw-bolder">
+
+
+            </p>
+
+        </div>
+    </div>
+    <div class="menu-graph col container">
+        <div class="row graph-display m-3">
+            <img id="graph-img"  >
+        </div>
+        <button onclick="updateGraph()" class="row btn btn-danger w-100">
+            Generate Graph
+        </button>
+    </div>
+</div>
+</div>
